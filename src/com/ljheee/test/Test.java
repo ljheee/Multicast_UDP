@@ -11,13 +11,13 @@ import java.net.UnknownHostException;
 public class Test {
 	
 	public static void main(String[] args){
-		String host = "225.0.0.1";//¶à²¥µØÖ·
+		String host = "225.0.0.1";//å¤šæ’­åœ°å€
 		int port = 9998;
 		String message = "test-multicastSocket";
 		try {
 			InetAddress group = InetAddress.getByName(host);
 			MulticastSocket s = new MulticastSocket(port);
-			//¼ÓÈë¶à²¥×é
+			//åŠ å…¥å¤šæ’­ç»„
 			s.joinGroup(group);
 			DatagramPacket dp = new DatagramPacket(message.getBytes(),message.length(),group,port);
 			s.send(dp);
@@ -25,7 +25,8 @@ public class Test {
 			byte[] buf = new byte[1024];
 			DatagramPacket dpc = new DatagramPacket(buf, buf.length);
 			s.receive(dpc);
-			System.out.println("ÊÕµ½¶à²¥ĞÅÏ¢£º"+buf.toString());
+	//		System.out.println("æ”¶åˆ°å¤šæ’­ä¿¡æ¯ï¼š"+buf.toString());
+			System.out.println("æ”¶åˆ°å¤šæ’­ä¿¡æ¯ï¼š"+new String(buf));
 			
 			
 		} catch (UnknownHostException e) {
